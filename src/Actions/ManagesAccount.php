@@ -18,7 +18,7 @@ trait ManagesAccount
             ]
         );
 
-        $this->checkAndHandleProvidusError($account, 'accountName');
+        $this->checkAndHandleProvidusError($account, 'account_number');
 
         return new AccountResource($account);
     }
@@ -32,7 +32,7 @@ trait ManagesAccount
             ]
         );
 
-        $this->checkAndHandleProvidusError($account, 'accountName');
+        $this->checkAndHandleProvidusError($account, 'account_number');
 
         return new AccountResource($account);
     }
@@ -49,7 +49,7 @@ trait ManagesAccount
 
         $this->checkAndHandleProvidusError(
             data: $response,
-            key: 'accountName'
+            key: 'account_number'
         );
 
         // TODO
@@ -70,7 +70,7 @@ trait ManagesAccount
 
         $this->checkAndHandleProvidusError(
             data: $response,
-            key: 'accountName'
+            key: 'account_number'
         );
 
         // TODO

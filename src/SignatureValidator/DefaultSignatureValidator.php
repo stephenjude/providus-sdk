@@ -11,11 +11,11 @@ class DefaultSignatureValidator implements SignatureValidator
     {
         $signature = $request->header(config('providus-sdk.webhook.signature_header_name'));
 
-        if (! $signature) {
+        if (!$signature) {
             return false;
         }
 
-        if ($signature === config('providus-sdk.webhook.test_signature')) {
+        if (config('providus-sdk.demo_mode') && $signature === config('providus-sdk.demo_signature')) {
             return true;
         }
 

@@ -16,7 +16,7 @@ class Providus
 
     public PendingRequest $request;
 
-    public function __construct(public bool $fakeRequest = false)
+    public function __construct()
     {
         $this->request = Http::acceptJson()
             ->baseUrl(config('providus-sdk.base_url'))
@@ -25,10 +25,5 @@ class Providus
                 'Client-Id' => config('providus-sdk.id'),
                 'X-Auth-Signature' => $this->createAuthSignature(config('providus-sdk.secret')),
             ]);
-    }
-
-    public static function fake(): static
-    {
-        return new static(fakeRequest: true);
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Providus\Providus\Actions;
 
 use Providus\Providus\Resources\AccountResource;
+use Providus\Providus\Resources\TransactionResource;
 
 trait ManagesTransaction
 {

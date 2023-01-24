@@ -24,8 +24,8 @@ trait MakesHttpRequests
 
     private function createAuthSignature(string $secret): bool|string
     {
-        if ($this->fakeRequest) {
-            return 'BE09BEE831CF262226B426E39BD1092AF84DC63076D4174FAC78A2261F9A3D6E59744983B8326B69CDF2963FE314DFC89635CFA37A40596508DD6EAAB09402C7';
+        if (config('providus-sdk.demo_mode')) {
+            return config('providus-sdk.demo_signature');
         }
 
         if ($hash = hash('sha512', $secret)) {
