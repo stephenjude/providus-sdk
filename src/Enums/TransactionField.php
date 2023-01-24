@@ -4,8 +4,18 @@ declare(strict_types=1);
 
 namespace Providus\Providus\Enums;
 
-enum ResponseField: string
+use ArchTech\Enums\InvokableCases;
+use ArchTech\Enums\Names;
+use ArchTech\Enums\Options;
+use ArchTech\Enums\Values;
+
+enum TransactionField: string
 {
+    use InvokableCases;
+    use Options;
+    use Names;
+    use Values;
+
     case SESSION_ID = 'sessionId';
     case ACCOUNT_NUMBER = "accountNumber";
     case REMARK = "tranRemarks";

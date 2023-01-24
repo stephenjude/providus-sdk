@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/stephenjude/providus-sdk/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/stephenjude/providus-sdk/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/stephenjude/providus-sdk.svg?style=flat-square)](https://packagist.org/packages/stephenjude/providus-sdk)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This package is used for consuming providus bank apis.
 
 ## Support us
 
@@ -35,15 +35,6 @@ This is the contents of the published config file:
 return [
 ];
 ```
-
-## Usage
-
-```php
-$providus = new Providus\Providus();
-echo $providus->echoPhrase('Hello, Providus!');
-```
-# providus-bank-sdk
-This package is used for consuming providus bank apis.
 
 ## Usage
 Initiailize the Providus API
