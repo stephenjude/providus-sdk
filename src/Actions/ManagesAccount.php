@@ -27,9 +27,7 @@ trait ManagesAccount
     {
         $account = $this->post(
             uri: 'PiPCreateDynamicAccountNumber',
-            payload: [
-                'account_name' => $name,
-            ]
+            payload: ['account_name' => $name,]
         );
 
         $this->checkAndHandleProvidusError($account, 'account_number');

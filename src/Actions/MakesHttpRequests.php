@@ -35,7 +35,7 @@ trait MakesHttpRequests
         throw new AuthSignatureException();
     }
 
-    public function send(string $verb, string $uri, array $payload = []): array|null
+    public function send(string $verb, string $uri, array $payload = []): array|string|null
     {
         $response = match (strtoupper($verb)) {
             'POST' => $this->request->post($uri, $payload),
@@ -43,7 +43,7 @@ trait MakesHttpRequests
             default => throw new UnsuportedHttpMethodException(),
         };
 
-        if ($response->failed()) {
+        if ($response->failed() || is_string($response->json())) {
             $this->handleRequestError($response);
         }
 
