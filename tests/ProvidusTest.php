@@ -4,10 +4,6 @@ use Providus\Providus\Providus;
 use Providus\Providus\Resources\AccountResource;
 use Providus\Providus\Resources\TransactionResource;
 
-beforeAll(function () {
-    echo 'beforeAll';
-});
-
 it('can create dynamic account number', function () {
     $this->instance(
         abstract: Providus::class,
