@@ -39,8 +39,6 @@ return [
 ## Usage
 Initiailize the Providus API
 ```php
-require_once __DIR__.'/ProvidusApi.php';
-
 $bank = new \Providus\Providus\Providus();
 $bank->verifyTransactionBySessionId(SETTLEMENT_ID);
 
@@ -95,6 +93,51 @@ $transaction->sourceBankName;
 $transaction->remarks;
 $transaction->channelId;
 ```
+
+### Webbhook Controller
+You have to create a controller class that extends the base webhook controller that comes with this package. Update the providus config file to use your own defined controller.
+
+```php
+   /**
+     * The classname of the controller to be used to process the webhook.
+     * This should be set to a class that extends \Providus\Providus\Http\Controllers\WebhookController::class
+     */
+    'controller' => App\Http\Controllers\ProvidusWebhookController::class,
+```
+Update your controller like this to return the valid responses to providus for successful and duplicate responses. This package handles rejected response for you.
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Providus\Providus\Http\Controllers\WebhookController;
+
+class ProvidusWebhookController extends WebhookController
+{
+    public function handle(Request $request)
+    {
+        parent::handle($request);
+
+        if ($this->sessionHasDuplicate($request->input('sessionId'))) {
+            return $this->duplicateResponse($request);
+        }
+
+       // Webhook request is valid, so you can do your thing here.
+
+        return $this->successfulResponse($request);
+    }
+    
+    public function sessionHasDuplicate(string $sessionId){
+    
+        // Check if session ID has duplicate. A duplicate sessions is for transaction you have already processed previously.
+        
+    }
+}
+
+```
+
+
 
 ## Testing
 
