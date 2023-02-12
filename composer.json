@@ -1,6 +1,6 @@
 {
     "name": "stephenjude/providus-sdk",
-    "description": "Laravel SDK for Providus Bank APIs",
+    "description": "Laravel SDK for Providus Bank collection APIs",
     "keywords": [
         "stephenjude",
         "laravel",
