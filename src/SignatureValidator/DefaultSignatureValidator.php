@@ -15,8 +15,8 @@ class DefaultSignatureValidator implements SignatureValidator
             return false;
         }
 
-        if (config('providus-sdk.demo_mode') && $signature === config('providus-sdk.demo_signature')) {
-            return true;
+        if (config('providus-sdk.demo_mode')) {
+            return $signature === config('providus-sdk.demo_signature');
         }
 
         $signingSecret = config('providus-sdk.webhook.signing_secret');
