@@ -23,7 +23,7 @@ class Providus
             ->contentType('application/json')
             ->withHeaders([
                 'Client-Id' => config('providus-sdk.id'),
-                'X-Auth-Signature' => $this->createAuthSignature(config('providus-sdk.secret')),
+                'X-Auth-Signature' => $this->createAuthSignature(),
             ]);
     }
 }

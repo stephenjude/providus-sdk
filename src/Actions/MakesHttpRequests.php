@@ -23,13 +23,17 @@ trait MakesHttpRequests
         return $this->send('POST', $uri, $payload);
     }
 
-    private function createAuthSignature(string $secret): bool|string
+    private function createAuthSignature(): bool|string
     {
         if (config('providus-sdk.demo_mode')) {
             return config('providus-sdk.demo_signature');
         }
 
-        if ($hash = hash('sha512', $secret)) {
+        $id = config('providus-sdk.id');
+
+        $secret = config('providus-sdk.secret');
+
+        if ($hash = hash('sha512', "$id:$secret")) {
             return $hash;
         }
 
