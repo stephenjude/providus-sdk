@@ -2,12 +2,9 @@
 
 namespace Providus\Providus;
 
-use Illuminate\Http\Request;
-use Providus\Providus\SignatureValidator\DefaultSignatureValidator;
 use Providus\Providus\SignatureValidator\SignatureValidator;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Providus\Providus\Commands\ProvidusCommand;
 
 class ProvidusServiceProvider extends PackageServiceProvider
 {
@@ -23,9 +20,7 @@ class ProvidusServiceProvider extends PackageServiceProvider
     {
         $this->app->singleton(
             abstract: SignatureValidator::class,
-            concrete: fn($app) => $app->make(config('providus-sdk.webhook.signature_validator'))
+            concrete: fn ($app) => $app->make(config('providus-sdk.webhook.signature_validator'))
         );
     }
-
-
 }

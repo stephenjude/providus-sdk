@@ -8,5 +8,5 @@ use Exception;
 
 class UnsuportedHttpMethodException extends Exception
 {
-    protected $message = "Http method not supported";
+    protected $message = 'Http method not supported';
 }

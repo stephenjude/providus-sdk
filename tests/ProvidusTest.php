@@ -12,7 +12,7 @@ it('can create dynamic account number', function () {
         ])
     );
 
-    $accountDetails = app(Providus::class)->createDynamicAccountNumber("Test Account Name");
+    $accountDetails = app(Providus::class)->createDynamicAccountNumber('Test Account Name');
 
     expect($accountDetails)->toBeInstanceOf(AccountResource::class);
 });
@@ -25,8 +25,7 @@ it('can verify transaction by session id', function () {
         ])
     );
 
-
-    $transactionBySessionId = app(Providus::class)->verifyTransactionBySessionId("123456789012345");
+    $transactionBySessionId = app(Providus::class)->verifyTransactionBySessionId('123456789012345');
 
     expect($transactionBySessionId)->toBeInstanceOf(TransactionResource::class);
 });
@@ -39,7 +38,7 @@ it('can verify transaction by settlement id', function () {
         ])
     );
 
-    $transactionBySettlementId = app(Providus::class)->verifyTransactionBySettlementId("123456789012345");
+    $transactionBySettlementId = app(Providus::class)->verifyTransactionBySettlementId('123456789012345');
 
     expect($transactionBySettlementId)->toBeInstanceOf(TransactionResource::class);
 });

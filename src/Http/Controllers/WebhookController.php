@@ -13,7 +13,7 @@ class WebhookController extends Controller
     {
         $signatureValidator = app(SignatureValidator::class);
 
-        if (!$signatureValidator->isValid($request)) {
+        if (! $signatureValidator->isValid($request)) {
             return $this->rejectedResponse($request);
         }
     }
@@ -23,8 +23,8 @@ class WebhookController extends Controller
         return response()->json([
             'requestSuccessful' => true,
             'sessionId' => $request->input('sessionId'),
-            "responseMessage" => "rejected transaction",
-            "responseCode" => "02"
+            'responseMessage' => 'rejected transaction',
+            'responseCode' => '02',
         ]);
     }
 
@@ -33,8 +33,8 @@ class WebhookController extends Controller
         return response()->json([
             'requestSuccessful' => true,
             'sessionId' => $request->input('sessionId'),
-            "responseMessage" => "duplicate transaction",
-            "responseCode" => "01"
+            'responseMessage' => 'duplicate transaction',
+            'responseCode' => '01',
         ]);
     }
 

@@ -20,11 +20,6 @@ return [
 
     'webhook' => [
         /**
-         * This secret is used to verify that the payload has not been tampered with.
-         */
-        'signing_secret' => env('PROVIDUS_SECRET'),
-
-        /**
          * The name of the header containing the signature.
          */
         'signature_header_name' => 'X-Auth-Signature',

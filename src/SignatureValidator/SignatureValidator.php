@@ -2,7 +2,6 @@
 
 namespace Providus\Providus\SignatureValidator;
 
-use App\Exceptions\InvalidProvidusWebhookSignatureException;
 use Illuminate\Http\Request;
 
 interface SignatureValidator

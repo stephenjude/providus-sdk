@@ -8,5 +8,5 @@ use Exception;
 
 class AuthSignatureException extends Exception
 {
-    protected $message = "Failed to generate valid auth signature";
+    protected $message = 'Failed to generate valid auth signature';
 }

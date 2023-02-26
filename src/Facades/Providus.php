@@ -8,6 +8,7 @@ use Providus\Providus\Resources\TransactionResource;
 
 /**
  * @see \Providus\Providus\Providus
+ *
  * @method createReservedAccountNumber(string $name, string $bvn): AccountResource
  * @method createDynamicAccountNumber(string $name): AccountResource
  * @method updateAccountName(string $name, string $accountNumber): array

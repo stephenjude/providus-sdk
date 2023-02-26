@@ -2,7 +2,6 @@
 
 namespace Providus\Providus\SignatureValidator;
 
-use App\Exceptions\InvalidProvidusWebhookSignatureException;
 use Illuminate\Http\Request;
 
 class DefaultSignatureValidator implements SignatureValidator
@@ -11,7 +10,7 @@ class DefaultSignatureValidator implements SignatureValidator
     {
         $signature = $request->header(config('providus-sdk.webhook.signature_header_name'));
 
-        if (!$signature) {
+        if (! $signature) {
             return false;
         }
 
@@ -19,10 +18,12 @@ class DefaultSignatureValidator implements SignatureValidator
             return strtolower($signature) === strtolower(config('providus-sdk.demo_signature'));
         }
 
-        $signingSecret = config('providus-sdk.webhook.signing_secret');
+        $id = config('providus-sdk.id');
 
-        $computedSignature = hash_hmac('sha512', $request->getContent(), $signingSecret);
+        $secret = config('providus-sdk.secret');
 
-        return hash_equals($signature, $computedSignature);
+        $computedSignature =  hash('sha512', "$id:$secret");
+
+        return hash_equals($computedSignature, $signature);
     }
 }
