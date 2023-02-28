@@ -10,7 +10,10 @@ trait ManagesTransaction
 {
     public function verifyTransactionBySessionId(string $sessionId): TransactionResource
     {
-        $transaction = $this->get(uri: "PiPverifyTransaction?session_id=$sessionId");
+        $transaction = $this->get(
+            uri: 'PiPverifyTransaction_sessionid',
+            payload: ['session_id' => $sessionId]
+        );
 
         $this->checkAndHandleProvidusError(data: $transaction, key: 'sessionId');
 
@@ -19,7 +22,10 @@ trait ManagesTransaction
 
     public function verifyTransactionBySettlementId(string $settlementId): TransactionResource
     {
-        $transaction = $this->get(uri: "PiPverifyTransaction?settlement_id=$settlementId");
+        $transaction = $this->get(
+            uri: 'PiPverifyTransaction_settlementid',
+            payload: ['settlement_id' => $settlementId]
+        );
 
         $this->checkAndHandleProvidusError(data: $transaction, key: 'settlementId');
 

@@ -22,7 +22,7 @@ class DefaultSignatureValidator implements SignatureValidator
 
         $secret = config('providus-sdk.secret');
 
-        $computedSignature =  hash('sha512', "$id:$secret");
+        $computedSignature = hash('sha512', "$id:$secret");
 
         return hash_equals($computedSignature, $signature);
     }

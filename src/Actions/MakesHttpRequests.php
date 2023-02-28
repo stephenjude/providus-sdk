@@ -13,9 +13,9 @@ use Providus\Providus\Exceptions\UnsuportedHttpMethodException;
 
 trait MakesHttpRequests
 {
-    public function get(string $uri): ?array
+    public function get(string $uri, array $payload = []): ?array
     {
-        return $this->send('GET', $uri);
+        return $this->send('GET', $uri, $payload);
     }
 
     public function post(string $uri, array $payload = []): ?array
@@ -48,6 +48,8 @@ trait MakesHttpRequests
             default => throw new UnsuportedHttpMethodException(),
         };
 
+        dd($response->status(), $response->failed(), $response->json());
+
         if ($response->failed() || is_string($response->json())) {
             $this->handleRequestError($response);
         }
@@ -59,7 +61,7 @@ trait MakesHttpRequests
     {
         match ($response->status()) {
             400, 401, 403, 404 => throw new BadRequestException($response->reason()),
-            default => throw new Exception(($response->reason() ?? (string)$response->getBody())),
+            default => throw new Exception(($response->reason() ?? (string) $response->getBody())),
         };
     }
 

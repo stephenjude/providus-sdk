@@ -18,8 +18,7 @@ class Providus
 
     public function __construct()
     {
-        $this->request = Http::acceptJson()
-            ->baseUrl(config('providus-sdk.base_url'))
+        $this->request = Http::baseUrl(config('providus-sdk.base_url'))
             ->contentType('application/json')
             ->withHeaders([
                 'Client-Id' => config('providus-sdk.id'),
