@@ -48,8 +48,6 @@ trait MakesHttpRequests
             default => throw new UnsuportedHttpMethodException(),
         };
 
-        dd($response->status(), $response->failed(), $response->json());
-
         if ($response->failed() || is_string($response->json())) {
             $this->handleRequestError($response);
         }
