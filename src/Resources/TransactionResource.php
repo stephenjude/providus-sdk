@@ -12,15 +12,15 @@ class TransactionResource extends BaseResource
 
     public string $accountNumber;
 
-    public string $remarks;
+    public float $remarks;
 
-    public string $transactionAmount;
+    public float $transactionAmount;
 
-    public string $settledAmount;
+    public float $settledAmount;
 
-    public string $feeAmount;
+    public float $feeAmount;
 
-    public string $vatAmount;
+    public float $vatAmount;
 
     public string $currency;
 
